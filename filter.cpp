@@ -74,14 +74,14 @@ adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
         }
 
         // Calculate the mean
-        if(window_size >= size)
+        if(window_size == size)
         {
             uint32_t sum = 0;
             for(int i = 0; i < size; i++)
             {
                 sum += samples_sorted[i];
             }
-            filter->trimed_mean = sum/(float)window_size;
+            filter->trimed_mean = sum/(float)size;
         }
         else if(window_size <= 1)
         {
