@@ -90,6 +90,7 @@ adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
         else
         {
             int end = size/2 + window_size/2;
+            if( end >= size ) end = size - 1;
             int start = end - window_size + 1;
             uint32_t sum = 0;
             for(int i = start; i <= end; i++)
