@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 
+#ifndef FILTER_SMOOTHING_ALPHA
+#define FILTER_SMOOTHING_ALPHA 0.4f
+#endif
+
 typedef uint16_t adc_sample_t;
 
 typedef struct Filter {
