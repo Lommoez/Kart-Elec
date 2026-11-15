@@ -30,17 +30,17 @@ adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
     filter->samples[current_id] = value;
     filter->last_id = current_id;
 
-    // Search old value index in sorted array
-    int old_id = 0;
-    for (int i = size-1; i >= 0; i--) {
-        if (samples_sorted[i] == old_value) {
-            old_id = i;
-            break;
-        }
-    }
-
     //Check if sorting and calculating the mean is avoidable
     if(value != old_value) {
+
+        // Search old value index in sorted array
+        int old_id = 0;
+        for (int i = size-1; i >= 0; i--) {
+            if (samples_sorted[i] == old_value) {
+                old_id = i;
+                break;
+            }
+        }
 
         // Check if sorting is avoidable
         if(value <= samples_sorted[0]) {
@@ -52,15 +52,8 @@ adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
             samples_sorted[size-1] = value;
         }
         else {
-            int old_id = 0;
-            for(int i = size - 1; i >= 0; i--) { // Checking from the end because it's more likely to get high values
-                if(samples_sorted[i] == old_value) {
-                    old_id = i;
-                    break;
-                }
-            }
 
-            int left_id = 0;
+            int left_id = 0; // search first id verifying : samples_sorted[i] <= value
             for(int i = size - 1; i >= 0; i--) {
                 if(samples_sorted[i] <= value) {
                     left_id = i;
