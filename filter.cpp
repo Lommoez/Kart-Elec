@@ -100,7 +100,7 @@ adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
         }
     }
 
-    filter->trimed_filtered_mean = 0.6f*filter->trimed_filtered_mean + 0.4f*filter->trimed_mean;
+    filter->trimed_filtered_mean += FILTER_SMOOTHING_ALPHA * (filter->trimed_mean - filter->trimed_filtered_mean);
 
     return old_value;
 }
