@@ -89,7 +89,7 @@ adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
         {
             int end = size/2 + window_size/2;
             int start = end - window_size + 1;
-            adc_sample_t sum = 0;
+            uint32_t sum = 0;
             for(int i = start; i <= end; i++)
             {
                 sum += samples_sorted[i];
