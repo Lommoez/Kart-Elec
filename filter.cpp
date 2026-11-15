@@ -68,7 +68,7 @@ adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
                 samples_sorted[left_id] = value;
             }
             else if(old_id > left_id) {
-                memmove(samples_sorted+left_id+1, samples_sorted+left_id, (old_id-left_id)*sizeof(adc_sample_t));
+                memmove(samples_sorted+left_id+2, samples_sorted+left_id+1, (old_id-left_id-1)*sizeof(adc_sample_t));
                 samples_sorted[left_id+1] = value;
             }
         }
