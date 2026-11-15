@@ -1,6 +1,5 @@
 #include "filter.h"
 
-#include <stdlib.h>
 #include <string.h>
 
 static int uint16_compare(const void *a, const void *b);
@@ -121,10 +120,4 @@ float Filter_getTrimedMean(Filter *filter) {
 
 float Filter_getTrimedFilteredMean(Filter *filter) {
     return filter->trimed_filtered_mean;
-}
-
-int uint16_compare(const void *a, const void *b) {
-    uint16_t val_a = *(const uint16_t*)a;
-    uint16_t val_b = *(const uint16_t*)b;
-    return (val_a > val_b) - (val_a < val_b);
 }
