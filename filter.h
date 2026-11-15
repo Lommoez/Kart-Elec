@@ -22,7 +22,4 @@ uint16_t Filter_getMedian(Filter *filter);
 float Filter_getTrimedMean(Filter *filter);
 float Filter_getTrimedFilteredMean(Filter *filter);
 
-void printSamplesSorted(Filter *filter);
-void printSamples(Filter *filter);
-
 #endif //FILTER_H
