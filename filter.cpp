@@ -2,8 +2,6 @@
 
 #include <string.h>
 
-static int uint16_compare(const void *a, const void *b);
-
 void Filter_init(Filter *filter, int size, int window_size, adc_sample_t *array1, adc_sample_t *array2, adc_sample_t initial_value){
     filter->size = size;
     if(window_size <= 0) window_size = 1;
