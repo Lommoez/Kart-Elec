@@ -24,7 +24,8 @@ void Filter_init(Filter *filter, int size, int window_size, adc_sample_t *array1
 adc_sample_t Filter_push(Filter *filter, adc_sample_t value) {
     int size = filter->size;
     int window_size = filter->window_size;
-    int current_id = (filter->last_id + 1)%size;
+    int current_id = filter->last_id + 1;
+    if ( current_id == size ) current_id = 0;
     adc_sample_t *samples = filter->samples;
     adc_sample_t *samples_sorted = filter->samples_sorted;
     adc_sample_t old_value = samples[current_id];
