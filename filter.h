@@ -19,8 +19,8 @@ typedef struct Filter {
     uint16_t* samples_sorted;
 } Filter;
 
-void Filter_init(Filter *filter, int size, int window_size, uint16_t *array1, uint16_t *array2, uint16_t initial_value);
-uint16_t Filter_push(Filter *filter, uint16_t value);
+void Filter_init(Filter *filter, int size, int window_size, adc_sample_t *array1, adc_sample_t *array2, adc_sample_t initial_value);
+uint16_t Filter_push(Filter *filter, adc_sample_t value);
 
 uint16_t Filter_getMedian(Filter *filter);
 float Filter_getTrimedMean(Filter *filter);
